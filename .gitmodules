@@ -1,0 +1,3 @@
+[submodule ".claude/skills/harness-engineering-skill"]
+	path = .claude/skills/harness-engineering-skill
+	url = https://github.com/jonzarecki/harness-engineering-skill
