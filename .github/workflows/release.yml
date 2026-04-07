@@ -20,9 +20,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          # No registry-url here — setup-node's auth token wiring conflicts
-          # with OIDC trusted publishing. npm detects the GitHub OIDC environment
-          # automatically when NODE_AUTH_TOKEN is absent.
+
+      - name: Upgrade npm to support trusted publishing
+        run: npm install -g npm@latest
 
       - name: Install dependencies
         run: npm install
@@ -34,12 +34,10 @@ jobs:
         run: |
           PACKAGE_NAME=$(node -e "console.log(require('./package.json').name)")
           CURRENT=$(node -e "console.log(require('./package.json').version)")
-          PUBLISHED=$(npm view "$PACKAGE_NAME" version 2>/dev/null || echo "0.0.0")
+          PUBLISHED=$(npm view "$PACKAGE_NAME" version --registry https://registry.npmjs.org 2>/dev/null || echo "0.0.0")
           if [ "$CURRENT" != "$PUBLISHED" ]; then
             echo "Publishing $PACKAGE_NAME@$CURRENT (was $PUBLISHED on npm)"
-            npm publish --access public --provenance
+            npm publish --access public --provenance --registry https://registry.npmjs.org
           else
             echo "Version $CURRENT already published, skipping"
           fi
-        env:
-          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
