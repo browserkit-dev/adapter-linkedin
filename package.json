@@ -18,10 +18,10 @@
     "lint": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@browserkit-dev/core": ">=0.1.0"
+    "@browserkit-dev/core": ">=0.2.0"
   },
   "devDependencies": {
-    "@browserkit-dev/core": "^0.1.0",
+    "@browserkit-dev/core": "^0.2.0",
     "@types/node": "^22.13.14",
     "patchright": "^1.51.1",
     "tsx": "^4.19.3",
