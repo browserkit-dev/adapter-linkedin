@@ -1,4 +1,4 @@
-# @browserkit/adapter-linkedin
+# @browserkit-dev/adapter-linkedin
 
 [LinkedIn](https://www.linkedin.com) adapter for [browserkit](https://github.com/browserkit-dev/browserkit) — exposes LinkedIn as MCP tools over your authenticated local browser session. Runs entirely on your machine; no credentials leave localhost.
 
@@ -20,7 +20,7 @@ Plus auto-registered management tools from the framework: `browser` (health chec
 
 ```bash
 # Install
-pnpm add @browserkit/adapter-linkedin
+pnpm add @browserkit-dev/adapter-linkedin
 
 # One-time login (opens a browser window — sign in normally)
 browserkit login linkedin
@@ -31,11 +31,11 @@ browserkit start --config browserkit.config.js
 
 ```js
 // browserkit.config.js
-import { defineConfig } from "@browserkit/core";
+import { defineConfig } from "@browserkit-dev/core";
 
 export default defineConfig({
   adapters: {
-    "@browserkit/adapter-linkedin": {
+    "@browserkit-dev/adapter-linkedin": {
       port: 3848,
       channel: "chrome",   // use real Chrome — avoids bot detection on login
     },

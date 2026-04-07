@@ -1,6 +1,6 @@
-import { defineAdapter } from "@browserkit/core";
-import type { ToolReference } from "@browserkit/core";
-import { isAuthBlockerUrl, detectAuthBarrier } from "@browserkit/core";
+import { defineAdapter } from "@browserkit-dev/core";
+import type { ToolReference } from "@browserkit-dev/core";
+import { isAuthBlockerUrl, detectAuthBarrier } from "@browserkit-dev/core";
 import { z } from "zod";
 import type { Page } from "patchright";
 import { SELECTORS } from "./selectors.js";

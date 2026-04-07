@@ -1,5 +1,5 @@
 {
-  "name": "@browserkit/adapter-linkedin",
+  "name": "@browserkit-dev/adapter-linkedin",
   "version": "0.1.0",
   "description": "LinkedIn adapter for browserkit — profile, company, jobs, people search, and feed",
   "type": "module",
@@ -18,10 +18,10 @@
     "lint": "tsc --noEmit"
   },
   "peerDependencies": {
-    "@browserkit/core": ">=0.1.0"
+    "@browserkit-dev/core": ">=0.1.0"
   },
   "devDependencies": {
-    "@browserkit/core": "^0.1.0",
+    "@browserkit-dev/core": "^0.1.0",
     "@types/node": "^22.13.14",
     "patchright": "^1.51.1",
     "tsx": "^4.19.3",

@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 import linkedinAdapter from "../src/index.js";
 import { parseSections, PERSON_SECTIONS, COMPANY_SECTIONS } from "../src/sections.js";
 import { stripLinkedInNoise, buildJobSearchUrl, type SectionError } from "../src/scraper.js";
-import { isAuthBlockerUrl, detectAuthBarrier } from "@browserkit/core";
+import { isAuthBlockerUrl, detectAuthBarrier } from "@browserkit-dev/core";
 
 // ── Adapter metadata ──────────────────────────────────────────────────────
 

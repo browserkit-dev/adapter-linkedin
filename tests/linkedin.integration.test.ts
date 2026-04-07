@@ -21,7 +21,7 @@
  *   }
  */
 import { describe, it, expect, beforeAll, afterAll } from "vitest";
-import { createTestMcpClient, type TestMcpClient } from "@browserkit/core/testing";
+import { createTestMcpClient, type TestMcpClient } from "@browserkit-dev/core/testing";
 
 const MCP_URL = "http://127.0.0.1:52744/mcp";
 

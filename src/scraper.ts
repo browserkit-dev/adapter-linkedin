@@ -11,7 +11,7 @@
  */
 
 import type { Page } from "patchright";
-import { detectAuthBarrier, isAuthBlockerUrl } from "@browserkit/core";
+import { detectAuthBarrier, isAuthBlockerUrl } from "@browserkit-dev/core";
 
 // ── Types ──────────────────────────────────────────────────────────────────
 
