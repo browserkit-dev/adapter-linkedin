@@ -20,7 +20,9 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: https://registry.npmjs.org
+          # No registry-url here — setup-node's auth token wiring conflicts
+          # with OIDC trusted publishing. npm detects the GitHub OIDC environment
+          # automatically when NODE_AUTH_TOKEN is absent.
 
       - name: Install dependencies
         run: npm install
@@ -39,3 +41,5 @@ jobs:
           else
             echo "Version $CURRENT already published, skipping"
           fi
+        env:
+          NPM_CONFIG_REGISTRY: https://registry.npmjs.org/
