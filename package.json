@@ -1,6 +1,6 @@
 {
   "name": "@browserkit-dev/adapter-linkedin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "LinkedIn adapter for browserkit — profile, company, jobs, people search, and feed",
   "type": "module",
   "main": "./dist/index.js",
@@ -15,7 +15,8 @@
     "build": "tsc",
     "test": "vitest run",
     "test:integration": "vitest run --config vitest.integration.config.ts",
-    "lint": "tsc --noEmit"
+    "lint": "tsc --noEmit",
+    "prepublishOnly": "tsc"
   },
   "peerDependencies": {
     "@browserkit-dev/core": ">=0.2.0"
@@ -34,5 +35,9 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "files": [
+    "dist",
+    "README.md"
+  ]
 }
