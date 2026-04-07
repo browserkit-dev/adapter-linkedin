@@ -7,6 +7,7 @@ on:
 
 permissions:
   contents: read
+  id-token: write  # required for OIDC trusted publishing
 
 jobs:
   release:
@@ -34,9 +35,7 @@ jobs:
           PUBLISHED=$(npm view "$PACKAGE_NAME" version 2>/dev/null || echo "0.0.0")
           if [ "$CURRENT" != "$PUBLISHED" ]; then
             echo "Publishing $PACKAGE_NAME@$CURRENT (was $PUBLISHED on npm)"
-            npm publish --access public
+            npm publish --access public --provenance
           else
             echo "Version $CURRENT already published, skipping"
           fi
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
