@@ -4,7 +4,8 @@ on:
   push:
     branches: [main]
 
-concurrency: ${{ github.workflow }}-${{ github.ref }}
+permissions:
+  contents: read
 
 jobs:
   release:
@@ -13,16 +14,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org
-
-      - name: Install @changesets/cli
-        run: npm install -g @changesets/cli
 
       - name: Install dependencies
         run: npm install
@@ -30,14 +26,16 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Create Release PR or Publish
-        uses: changesets/action@v1
-        with:
-          publish: npx changeset publish
-          version: npx changeset version
-          title: "chore: release"
-          commit: "chore: release"
+      - name: Publish if version is new
+        run: |
+          PACKAGE_NAME=$(node -e "console.log(require('./package.json').name)")
+          CURRENT=$(node -e "console.log(require('./package.json').version)")
+          PUBLISHED=$(npm view "$PACKAGE_NAME" version 2>/dev/null || echo "0.0.0")
+          if [ "$CURRENT" != "$PUBLISHED" ]; then
+            echo "Publishing $PACKAGE_NAME@$CURRENT (was $PUBLISHED on npm)"
+            npm publish --access public
+          else
+            echo "Version $CURRENT already published, skipping"
+          fi
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
