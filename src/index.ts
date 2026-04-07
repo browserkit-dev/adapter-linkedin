@@ -65,6 +65,7 @@ function toText(result: ScrapeResult): string {
 
 export default defineAdapter({
   site: "linkedin",
+  minCoreVersion: "0.1.0",
   domain: "linkedin.com",
   loginUrl: "https://www.linkedin.com/login",
   selectors: { globalNav: SELECTORS.globalNav },
